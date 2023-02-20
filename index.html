@@ -18,7 +18,7 @@
   <link href="style.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/gh/proudparrot2/quick.js/quick.js"></script>
   <script src="https://kit.fontawesome.com/e897e5d5dc.js" crossorigin="anonymous"></script>
-  <!--   pass protect -->
+  <!--   pass protect
   <SCRIPT language="JavaScript">
     var password;
     var pass1 = "homemadefood";
@@ -30,6 +30,7 @@
       alert('Neanderthals are no longer supported. Prehistoric computers are not allowed! Security has been alerted. Attempts left: 1. Press ok to try again.')
     }
   </SCRIPT>
+   -->
 </head>
 
 <body>
@@ -66,9 +67,10 @@
     <button onclick="updateShortcut()"><i class="fa-solid fa-check"></i></button>
   </div>
 
-  <div id="todo" class="window">
+  <div id="todo">
     <h1>Todolist</h1>
-    broken for now :(
+    <iframe id="todoframe" src="https://todo.bookie0.repl.co/"
+      style="border: none; position: fixed; top: 0; bottom: 0; left: 0; right: 0" height="90%" width="100%"></iframe>
   </div>
 
   <div id="shortcut">
@@ -78,10 +80,16 @@
       height="100%" width="100%"></iframe>
   </div>
 
+  <div id="htmled">
+    <h1>HTML Editor</h1>
+   <iframe src="https://pentacats.github.io/HTML-Editor" style="border: none; position: fixed; top: 0; bottom: 0; left: 0; right: 0"
+      height="100%" width="100%"></iframe>
+  </div>
+  
   <div id="download" class="window">
     <h1>Download</h1>
     <p>How to locally download Argon:</p>
-    <p>1. Click <a href="Electron.zip">here</a> to download the Argon file</p>
+    <p>1. Click <a href="Argon/  ">here</a> to download the Argon file</p>
     <p>2. Right click the file once it's downloaded, and click Extract All or Unzip</p>
     <p>3. Navigate to the folder it made called Argon, and double click the index.html file.</p><br>
     <p>4.Done! Argon is now downloaded on your computer. If you want to open it again, just double click the index.html 
@@ -98,6 +106,7 @@
     <a class="navlink" id="settingsLink"><i class="fa-solid fa-gear"></i></a>
     <a class="navlink" id="todolink"><i class="fa-solid fa-check"></i></a>
     <a class="navlink" id="scLink"><i class="fa-solid fa-thumbtack"></i></a>
+    <a class="navlink" id="htmlLink"><i class="fa-solid fa-code"></i></a>
     <a class="navlink" id="downloadLink"><i class="fa-solid fa-download"></i></a>
 
 
@@ -161,9 +170,15 @@
       changePage("shortcut")
     })
 
+     _.on("#htmlLink", "click", function () {
+      testSelected()
+      _.addClass("#htmlLink", "selected")
+      changePage("htmled")
+    })
 
+    
     function testSelected() {
-      var links = ["abLink", "browserLink", "settingsLink", "home", "downloadLink", "todolink", "scLink"]
+      var links = ["abLink", "browserLink", "settingsLink", "home", "downloadLink", "todolink", "scLink", "htmlLink"]
 
       links.forEach(link => {
         var e = document.getElementById(link)
@@ -171,7 +186,7 @@
       })
     }
     function changePage(x) {
-      var pages = ["aboutblank", "browser", "settings", "main", "download", "todo", "shortcut"]
+      var pages = ["aboutblank", "browser", "settings", "main", "download", "todo", "shortcut", "htmled"]
 
       pages.forEach(page => {
         document.getElementById(page).style.display = "none"
