@@ -41,7 +41,7 @@
   </div>
 
   <div id="aboutblank" class="window">
-    <h2>about:blank launcher</h2><br>
+    <h2>about:blank launcher for fun</h2><br>
     <input id="urlInput" type="text" placeholder="Enter URL" autocomplete="off" />
     <button id="changeUrl" style="display: none;"><i class="fa-solid fa-pen"></i> Change</button>
     <button id="launch"><i class="fa-solid fa-rocket"></i> Launch</button>
@@ -49,7 +49,7 @@
 
   <div id="browser">
     <h1>Browser</h1>
-    <iframe id="browserframe" src="https://sysnow.org"
+    <iframe id="browserframe" src="https://replit.com/@YodaCode/fx-us-6?lite=1"
       style="border: none; position: fixed; top: 0; bottom: 0; left: 0; right: 0" height="100%" width="100%"></iframe>
   </div>
 
@@ -62,7 +62,7 @@
     <input id="faviconInput" type="text" placeholder="Tab Icon URL">
     <button onclick="updateFavicon()"><i class="fa-solid fa-check"></i></button>
     <br>
-    <input id="shortcut" type="text" placeholder="Shortcut URL">
+    <input id="customshortcut" type="text" placeholder="Shortcut URL">
     <button onclick="updateShortcut()"><i class="fa-solid fa-check"></i></button>
   </div>
 
@@ -72,9 +72,10 @@
   </div>
 
   <div id="shortcut">
-    <h1>Browser</h1>
-    <iframe id="scframe" src="https://firefox.baymax103.repl.co"
-      style="border: none; position: fixed; top: 0; bottom: 0; left: 0; right: 0" height="100%" width="100%"></iframe>
+    <h1>Custom Shortcut</h1>
+    <p>Go to settings to set a custom shortcut</p>
+    <iframe id="scframe" src="about:blank" style="border: none; position: fixed; top: 0; bottom: 0; left: 0; right: 0"
+      height="100%" width="100%"></iframe>
   </div>
 
   <div id="download" class="window">
@@ -83,8 +84,9 @@
     <p>1. Click <a href="Electron.zip">here</a> to download the Argon file</p>
     <p>2. Right click the file once it's downloaded, and click Extract All or Unzip</p>
     <p>3. Navigate to the folder it made called Argon, and double click the index.html file.</p><br>
-    <p>Done! Argon is now downloaded on your computer. If you want to open it again, just double click the index.html
+    <p>4.Done! Argon is now downloaded on your computer. If you want to open it again, just double click the index.html 
       file again.</p>
+    <p>5. If you want to access it easier just bookmark the index.html page.</p>
   </div>
 
 
@@ -95,7 +97,7 @@
     <a class="navlink selected" id="browserLink"><i class="fa-solid fa-globe"></i></a>
     <a class="navlink" id="settingsLink"><i class="fa-solid fa-gear"></i></a>
     <a class="navlink" id="todolink"><i class="fa-solid fa-check"></i></a>
-    <a class="navlink" id="scLink"><i class="fa-solid fa-arrow-right"></i></a>
+    <a class="navlink" id="scLink"><i class="fa-solid fa-thumbtack"></i></a>
     <a class="navlink" id="downloadLink"><i class="fa-solid fa-download"></i></a>
 
 
@@ -111,7 +113,7 @@
     changePage("main")
 
 
-    var links = ["abLink", "browserLink", "settingsLink", "downloadLink", "todolink"]
+    var links = ["abLink", "browserLink", "settingsLink", "downloadLink", "todolink", "scLink"]
 
     links.forEach(link => {
       var e = document.getElementById(link)
@@ -153,9 +155,15 @@
       changePage("todo")
     })
 
+    _.on("#scLink", "click", function () {
+      testSelected()
+      _.addClass("#scLink", "selected")
+      changePage("shortcut")
+    })
+
 
     function testSelected() {
-      var links = ["abLink", "browserLink", "settingsLink", "home", "downloadLink", "todolink"]
+      var links = ["abLink", "browserLink", "settingsLink", "home", "downloadLink", "todolink", "scLink"]
 
       links.forEach(link => {
         var e = document.getElementById(link)
@@ -163,7 +171,7 @@
       })
     }
     function changePage(x) {
-      var pages = ["aboutblank", "browser", "settings", "main", "download", "todo"]
+      var pages = ["aboutblank", "browser", "settings", "main", "download", "todo", "shortcut"]
 
       pages.forEach(page => {
         document.getElementById(page).style.display = "none"

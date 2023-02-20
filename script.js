@@ -81,12 +81,12 @@ function updateFavicon() {
 }
 // custom shortcut
 function updateShortcut() {
-  var input = _.get("#shortcut")
-  var frame = _.get("#hello")
+  var input = _.get("#customshortcut")
+  var frame = _.get("#scframe")
   frame.src = input.value
-  localStorage.setItem("shortlink", input.value)
+  localStorage.setItem("scLink", input.value)
   frame.setAttribute("src", input.value)
   input.value = ""
 }
 
-_.get("#frame").src = localStorage.getItem("shortlink") || "https://sysnow.org"
+_.get("#scframe").src = localStorage.getItem("scLink") || "about:blank"
